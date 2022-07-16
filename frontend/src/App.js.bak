@@ -1,0 +1,123 @@
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import TableCompany from "./screens/TableCompany";
+import AddCompany from "./screens/AddCompany";
+import EditCompany from "./screens/EditCompany";
+import CompanyDetail from "./screens/CompanyDetail";
+import Layout from "./components/Layout";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#3F80EA",
+    },
+    secondary: {
+      main: "#495057",
+    },
+    success: {
+      main: "#5cb85c",
+    },
+    warning: {
+      main: "#f0ad4e",
+    },
+    info: {
+      main: "#5bc0de",
+    },
+  },
+  typography: {
+    fontFamily: "Inter",
+    h1: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      fontSize: "1.65rem",
+      lineHeight: 1.2,
+      color: "#495057",
+    },
+    h2: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      fontSize: "1.44375rem",
+      lineHeight: 1.2,
+      color: "#495057",
+    },
+    h3: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      fontSize: "1.2375rem",
+      lineHeight: 1.2,
+      color: "#495057",
+    },
+    h4: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      fontSize: "1.03125rem",
+      lineHeight: 1.2,
+      color: "#495057",
+    },
+    h5: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      fontSize: "0.825rem",
+      lineHeight: 1.2,
+      color: "#495057",
+    },
+    h6: {
+      fontFamily: "Inter",
+      fontWeight: 500,
+      fontSize: "0.825rem",
+      lineHeight: 1.2,
+      color: "#495057",
+    },
+    body1: {
+      fontSize: "0.825rem",
+    },
+    button: {
+      fontFamily: "Inter",
+      fontWeight: 400,
+      fontSize: "0.825rem",
+      lineHeight: 1.625,
+      letterSpacing: "0.02857em",
+      textTransform: "none",
+    },
+  },
+  shape: {
+    borderRadius: "0.2rem",
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        textTransform: "none",
+        padding: "0.25rem 0.7rem",
+      },
+    },
+  },
+  props: {
+    MuiButton: {
+      disableRipple: true,
+      variant: "contained",
+    },
+  },
+});
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route exact path="/" element={<TableCompany />} />
+            <Route exact path="/add" element={<AddCompany />} />
+            <Route exact path="/edit/:id" element={<EditCompany />} />
+            <Route exact path="/company/:id" element={<CompanyDetail />} />
+          </Routes>
+        </Layout>
+      </Router>
+
+      <CssBaseline />
+    </ThemeProvider>
+  );
+}
+
+export default App;
